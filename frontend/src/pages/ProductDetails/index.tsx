@@ -8,7 +8,7 @@ import { Product } from "types/product";
 
 
 import './styles.css';
-import { type } from "os";
+
 
 type UrlParams = {
     productId: string;
