@@ -1,0 +1,66 @@
+.login-card {
+  padding: 20px;
+  font-size: 16px;
+}
+
+.login-card h1 {
+  font-weight: normal;
+  margin-bottom: 49px;
+  margin-top: 70px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  color: #263238;
+}
+
+.login-link-recover {
+  font-size: 14px;
+  color: #407bff;
+  letter-spacing: -0.015em;
+  display: block;
+  margin-bottom: 90px;
+}
+
+.login-link-register {
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: -0.015em;
+  text-decoration-line: underline;
+  color: #407bff;
+  margin-left: 10px;
+}
+
+.login-submit {
+  margin-bottom: 10px;
+}
+
+.not-registered {
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: -0.015em;
+  color: #9e9e9e;
+}
+
+.signup-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+@media (min-width: 576px) {
+  .login-card {
+    padding: 50px;
+  }
+  .not-registered {
+    font-size: 1em;
+  }
+
+  .login-link-register {
+    font-size: 1em;
+  }
+
+  .login-link-recover {
+    font-size: 1em;
+  }
+}
