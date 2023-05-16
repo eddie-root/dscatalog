@@ -22,9 +22,9 @@
 }
 
 .goback-container svg {
-  margin-right: 10px;
   color: #407bff;
   transform: rotate(-180deg);
+  margin-right: 10px;
 }
 
 .img-container {

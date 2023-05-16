@@ -10,7 +10,6 @@ import ProductDetailsLoader from "./ProductDetailsLoader";
 
 import './styles.css';
 
-
 type UrlParams = {
     productId: string;
 }
@@ -32,8 +31,6 @@ const ProductsDetails = () => {
                 setIsLoading(false);
             });
     }, [productId]);
-
-
 
     return (
         <div className='product-details-container'>
