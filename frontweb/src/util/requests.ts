@@ -111,4 +111,28 @@ axios.interceptors.response.use(function (response) {
     return (TokenData && TokenData.exp * 1000 > Date.now()) ? true : false;
   }
 
-  
+  export const hasAnyRoles = (roles: Role[]): boolean => {
+    if (roles.length === 0 ){
+      return true;
+    }
+
+    const TokenData = getTokenData();
+
+    //formula de procura de roles 
+    if (TokenData !== undefined){
+      return roles.some(item => TokenData.authorities.includes(item));
+     
+    }
+
+    //formula alternativa para procurar roles....
+    // if (TokenData !== undefined){
+    //   for (var i = 0; i < roles.length; i++){
+    //     if(TokenData.authorities.includes(roles[i])){
+    //       return true;
+    //     }
+    //   }
+    // }
+
+
+    return false;
+  }
