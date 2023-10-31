@@ -36,7 +36,7 @@ const Form = () => {
                 })
 
         }
-    }, []);
+    }, [isEditing, productId, setValue]);
 
     const onSubmit = (formData: Product) => {
         const data = {
