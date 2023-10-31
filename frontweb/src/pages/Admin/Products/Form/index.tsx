@@ -24,8 +24,8 @@ const Form = () => {
         };
 
         requestBackend(config)
-            .then(response => {
-                console.log(response.data);
+            .then(() => {
+                history.push('/admin/products');
             })
 
     };
@@ -89,7 +89,9 @@ const Form = () => {
                             className='btn btn-outline-danger procut-crud-button'
                             onClick={handleCancel}
                         >CANCELAR</button>
-                        <button className='btn btn-primary procut-crud-button text-white'>SALVAR</button>
+                        <button
+                            className='btn btn-primary procut-crud-button text-white'
+                        >SALVAR</button>
                     </div>
                 </form >
             </div>
