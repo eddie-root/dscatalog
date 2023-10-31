@@ -16,7 +16,7 @@ const List = () => {
         "categories": [
             {
                 "id": 3,
-                "name": "Computer"
+                "name": "Comput"
             },
             {
                 "id": 2,
@@ -26,7 +26,7 @@ const List = () => {
     }
 
     return (
-        <>
+        <div className='product-crud-container'>
             <div className='product-crud-bar-container'>
                 <Link to='/admin/products/create'>
                     <button className='btn btn-primary text-white btn-crud-card'>ADICIONAR</button>
@@ -46,8 +46,8 @@ const List = () => {
             </div>
 
 
-        </>
-    )
-}
+        </div>
+    );
+};
 
 export default List;
