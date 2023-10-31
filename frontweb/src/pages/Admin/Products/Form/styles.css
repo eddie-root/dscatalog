@@ -6,4 +6,46 @@
   font-weight: bold;
   font-size: 22px;
   color: #263238;
+  margin-bottom: 30px;
+}
+
+.margin-bottom-30 {
+  margin-bottom: 30px;
+}
+
+.product-crud-inputs-container {
+  margin-bottom: 30px;
+}
+
+.product-crud-inputs-left-container {
+  margin-bottom: 30px;
+}
+
+.procut-crud-buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.procut-crud-button {
+  height: 50px;
+  width: 110px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+@media (min-width: 576px) {
+  .procut-crud-buttons-container {
+    justify-content: flex-end;
+  }
+
+  .procut-crud-button {
+    margin-left: 30px;
+    width: 210px;
+  }
+}
+
+@media (min-width: 992px) {
+  .product-crud-inputs-left-container {
+    margin-bottom: 0;
+  }
 }
