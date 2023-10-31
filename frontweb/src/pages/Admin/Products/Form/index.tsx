@@ -1,24 +1,54 @@
 import './styles.css';
 import { AxiosRequestConfig } from 'axios';
-import React from 'react'
-import { useForm } from 'react-hook-form';
-import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react'
+import { useForm, } from 'react-hook-form';
+import { useHistory, useParams } from 'react-router-dom';
 import { Product } from 'types/product';
 import { requestBackend } from 'util/requests';
 
+type UrlParams = {
+    productId: string
+}
 
 const Form = () => {
 
+    const { productId } = useParams<UrlParams>();
+
+    const isEditing = productId !== 'create';
+
     const history = useHistory();
 
-    const { register, handleSubmit, formState: { errors } } = useForm<Product>();
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm<Product>();
+
+    useEffect(() => {
+        if (isEditing) {
+            requestBackend({ url: `/products/${productId}` })
+                .then((response) => {
+
+                    const item = response.data as Product;
+
+                    setValue('name', item.name);
+                    setValue('price', item.price);
+                    setValue('description', item.description);
+                    setValue('imgUrl', item.imgUrl);
+                    setValue('categories', item.categories);
+
+                })
+
+        }
+    }, []);
 
     const onSubmit = (formData: Product) => {
-        const data = { ...formData, categories: [{ id: 1, name: "" }] }
+        const data = {
+            ...formData,
+            imgUrl: isEditing ? formData.imgUrl
+                : '',
+            categories: [{ id: 1, name: "" }]
+        }
 
         const config: AxiosRequestConfig = {
-            method: 'POST',
-            url: "/products",
+            method: isEditing ? 'PUT' : 'POST',
+            url: isEditing ? `/products/${productId}` : "/products",
             data: data,
             withCredentials: true
         };
