@@ -1,7 +1,7 @@
 import './styles.css';
 import { AxiosRequestConfig } from 'axios';
 import { useEffect, useState } from 'react'
-import { useForm, } from 'react-hook-form';
+import { Controller, useForm, } from 'react-hook-form';
 import { useHistory, useParams } from 'react-router-dom';
 import Select from 'react-select';
 import { Category } from 'types/category';
@@ -22,7 +22,13 @@ const Form = () => {
 
     const history = useHistory();
 
-    const { register, handleSubmit, setValue, formState: { errors } } = useForm<Product>();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        setValue,
+        control
+    } = useForm<Product>();
 
     useEffect(() => {
         requestBackend({ url: '/categories' })
@@ -54,8 +60,8 @@ const Form = () => {
             ...formData,
             imgUrl: isEditing ? formData.imgUrl
                 : '',
-            categories: [{ id: 1, name: "" }]
-        }
+            categories: isEditing ? formData.categories : [{ id: 1, name: "" }],
+        };
 
         const config: AxiosRequestConfig = {
             method: isEditing ? 'PUT' : 'POST',
@@ -97,13 +103,26 @@ const Form = () => {
                             </div>
 
                             <div className='margin-bottom-30'>
-                                <Select
-                                    options={selectCategories}
-                                    classNamePrefix="product-crud-select"
-                                    isMulti
-                                    getOptionLabel={(item: Category) => item.name}
-                                    getOptionValue={(item: Category) => String(item.id)}
+                                <Controller
+                                    name="categories"
+                                    rules={{ required: true }}
+                                    control={control}
+                                    render={({ field }) => (
+                                        <Select {...field}
+                                            options={selectCategories}
+                                            classNamePrefix="product-crud-select"
+                                            isMulti
+                                            getOptionLabel={(item: Category) => item.name}
+                                            getOptionValue={(item: Category) => String(item.id)}
+                                        />
+
+                                    )}
                                 />
+                                {errors.categories && (
+                                    <div className='invalid-feedback d-block'>
+                                        Campo obrigatório
+                                    </div>
+                                )}
                             </div>
 
                             <div className='margin-bottom-30'>
