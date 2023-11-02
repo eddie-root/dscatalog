@@ -11,7 +11,6 @@
   background-color: #e1e1e1;
   font-size: 18px;
   font-weight: bold;
-  letter-spacing: -0.015em;
   color: #fff;
   display: flex;
   justify-content: center;
@@ -19,15 +18,15 @@
   margin-left: 10px;
 }
 
-/* .pagination-item.active {
+.pagination-item.active {
   background-color: #407bff;
-} */
+}
 
 .pagination-link-active {
   background-color: #407bff;
 }
 
-.arrow-previous {
+.arrow-previews {
   transform: rotate(-180deg);
   color: #407bff;
 }
@@ -43,4 +42,9 @@
 
 .arrow-active {
   color: #407bff;
+}
+
+.pagination-arrow-container {
+  display: flex;
+  align-items: center;
 }
