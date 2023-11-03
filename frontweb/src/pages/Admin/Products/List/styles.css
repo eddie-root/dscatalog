@@ -15,10 +15,12 @@
 @media (min-width: 768px) {
   .product-crud-bar-container {
     display: flex;
+    justify-content: center;
   }
 
   .btn-crud-card {
-    height: 60px;
+    height: 65px;
+    width: 140px;
     margin-bottom: 0;
   }
 

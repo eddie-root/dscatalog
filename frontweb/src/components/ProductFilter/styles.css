@@ -64,8 +64,27 @@
 
 @media (min-width: 768px) {
   .product-filter-container {
+    padding: 7px 15px;
     margin-left: 20px;
     flex: 1;
+    margin-bottom: 20px;
+  }
+
+  .btn-product-filter-word {
+    display: none;
+  }
+
+  .product-filter-form {
+    display: flex;
+  }
+
+  .produto-filter-name-container {
+    flex: 1;
+    margin-right: 10px;
     margin-bottom: 0;
+  }
+
+  .product-filter-bottom-container {
+    flex: 1;
   }
 }
