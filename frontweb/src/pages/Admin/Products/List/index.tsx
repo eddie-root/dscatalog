@@ -7,6 +7,7 @@ import { SpringPage } from 'types/vendor/spring';
 import { Product } from 'types/product';
 import { requestBackend } from 'util/requests';
 import Pagination from 'components/Pagination';
+import ProductFilter from 'components/ProductFilter';
 
 type ControlComponentsData = {
     activePage: number;
@@ -52,7 +53,7 @@ const List = () => {
                 <Link to='/admin/products/create'>
                     <button className='btn btn-primary text-white btn-crud-card'>ADICIONAR</button>
                 </Link>
-                <div className='base-card product-filter-container'>Search bar</div>
+                <ProductFilter />
             </div>
 
             <div className='row'>
