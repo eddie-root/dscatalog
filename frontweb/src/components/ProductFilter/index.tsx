@@ -8,18 +8,19 @@ import { requestBackend } from 'util/requests';
 
 type ProductFilterData = {
     name: string;
-    category: Category;
+    category: Category | null;
 }
 
 const ProductFilter = () => {
 
     const [selectCategories, setSelectCategories] = useState<Category[]>([]);
 
-
     const {
         register,
         handleSubmit,
-        control
+        control,
+        setValue,
+        getValues
     } = useForm<ProductFilterData>();
 
     useEffect(() => {
@@ -29,8 +30,24 @@ const ProductFilter = () => {
             });
     }, []);
 
+    const handleChangeCategory = (value: Category) => {
+        setValue('category', value);
+
+        const obj = {
+            name: getValues('name'),
+            category: getValues('category')
+        }
+
+        console.log('ENVIOU ', obj);
+    }
+
     const onSubmit = (formData: ProductFilterData) => {
         console.log('ENVIOU ', formData);
+    }
+
+    const handleFormClear = () => {
+        setValue('name', "");
+        setValue('category', null);
     }
 
     return (
@@ -59,6 +76,7 @@ const ProductFilter = () => {
                                 <Select {...field}
                                     options={selectCategories}
                                     isClearable
+                                    onChange={value => handleChangeCategory(value as Category)}
                                     placeholder="Categoria..."
                                     classNamePrefix="product-filter-select"
                                     getOptionLabel={(item: Category) => item.name}
@@ -68,7 +86,12 @@ const ProductFilter = () => {
                             )}
                         />
                     </div>
-                    <button className='btn btn-ouline-secondary btn-product-filter-clear'>LIMPAR<span className='btn-product-filter-word'> FILTRO</span></button>
+                    <button
+                        onClick={handleFormClear}
+                        className='btn btn-ouline-secondary btn-product-filter-clear'>
+                        LIMPAR
+                        <span className='btn-product-filter-word'>FILTRO</span>
+                    </button>
                 </div>
 
             </form>
