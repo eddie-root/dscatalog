@@ -17,6 +17,10 @@
   box-shadow: none;
 }
 
+.product-filter-container input::placeholder {
+  color: #9e9e9e;
+}
+
 .product-filter-search-icon {
   border: none;
   background-color: unset;
